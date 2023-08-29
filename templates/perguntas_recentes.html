@@ -4,16 +4,21 @@
 Mega Enquetes
 {% endblock %}
 {% block content %}
+<a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold">
+    + Pergunta
+</a>
+
 <!-- substitui o bloco content em _layout1.html -->
 <h1>Nossas últimas Enquetes</h1>
 {% for question in latest_question_list %}
 <article>
     <h2>Em: {{ question.pub_date|date:"d / m / Y" }}</h2>
     <p>{{ question.question_text }}</p>
+    <a href="{% url 'poll_edit' pk=question.id %}" class="link-secondary">
+        Editar
+    </a>
+        
 </article>
 {% endfor %}
 {% endblock %}
 <!-- fecha o bloco content -->
-<a href="{% url 'poll_add' %}" class="btn btn-lg btn-primary font-weight-bold">
-    + Pergunta
-    </a>
