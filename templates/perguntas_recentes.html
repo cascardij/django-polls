@@ -8,6 +8,8 @@ Mega Enquetes
     + Pergunta
 </a>
 
+
+            
 <!-- substitui o bloco content em _layout1.html -->
 <h1>Nossas últimas Enquetes</h1>
 {% for question in latest_question_list %}
@@ -17,7 +19,9 @@ Mega Enquetes
     <a href="{% url 'poll_edit' pk=question.id %}" class="link-secondary">
         Editar
     </a>
-        
+    <a href="{% url 'poll_delete' pk=question.id %}" class="link-secondary">
+        Excluir
+    </a>
 </article>
 {% endfor %}
 {% endblock %}

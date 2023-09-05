@@ -30,7 +30,22 @@ bg-white border-bottom shadow-sm">
 {% block main %}
 <div class="container">
     {% block content %}
-    <p>Conteúdo padrão...</p>
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Excluindo a Pergunta Nº {{ object.id }}</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                 {% csrf_token %}
+                 <h6>Você tem certeza que deseja excluir a pergunta abaixo ?</h6>
+                 <br />
+                <p>"{{ object.question_text }}"</p>
+                 <br />
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+                <a href="{% url 'polls_list' %}" class="link-secondary">Cancelar </a>
+           </form>
+         </div>
+    </div>
     {% endblock content %}
 </div>
 {% endblock %}
@@ -50,3 +65,4 @@ bg-white border-bottom shadow-sm">
 <!-- JS do Projeto -->
 <script src="{% static 'js/base.js' %}"></script>
 {% endblock %}
+
